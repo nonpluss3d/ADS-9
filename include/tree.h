@@ -7,26 +7,22 @@
 
 class PMTreeNode {
  public:
+  explicit PMTreeNode(char val);
   char value;
   std::vector<std::unique_ptr<PMTreeNode>> children;
-
-  PMTreeNode(char val);
 };
 
 class PMTree {
  public:
-  PMTree(const std::vector<char>& symbols);
-
+  explicit PMTree(const std::vector<char>& symbols);
   ~PMTree();
 
   PMTreeNode* getRoot() const;
-
   int getTotalPermutations() const;
 
  private:
   void buildSubtree(PMTreeNode* node,
                     const std::vector<char>& remainingSymbols);
-
   std::unique_ptr<PMTreeNode> root;
   int totalPermutations;
 };
